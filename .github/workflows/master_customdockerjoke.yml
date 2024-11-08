@@ -23,14 +23,14 @@ jobs:
       uses: docker/login-action@v2
       with:
         registry: https://index.docker.io/v1/
-        username: ${{ secrets.AzureAppService_ContainerUsername_c7a572ef83ce4fc4b5f07ec47a2e4126 }}
-        password: ${{ secrets.AzureAppService_ContainerPassword_3cdb47a14fd94d698e21777b426cf1be }}
+        username: ${{ secrets.AzureAppService_ContainerUsername_a043384f420c458692eb88148f27a951 }}
+        password: ${{ secrets.AzureAppService_ContainerPassword_cb364f8b8ccb453fa2dd67b0e513ddf5 }}
 
     - name: Build and push container image to registry
       uses: docker/build-push-action@v3
       with:
         push: true
-        tags: index.docker.io/${{ secrets.AzureAppService_ContainerUsername_c7a572ef83ce4fc4b5f07ec47a2e4126 }}/jokecustom:${{ github.sha }}
+        tags: index.docker.io/${{ secrets.AzureAppService_ContainerUsername_a043384f420c458692eb88148f27a951 }}/jokecustom:${{ github.sha }}
         file: ./Dockerfile
 
   deploy:
@@ -47,5 +47,5 @@ jobs:
       with:
         app-name: 'customdockerjoke'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_46b138a031764a61bf7efff690b5a71e }}
-        images: 'index.docker.io/${{ secrets.AzureAppService_ContainerUsername_c7a572ef83ce4fc4b5f07ec47a2e4126 }}/jokecustom:${{ github.sha }}'
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_013728076a9545d186b51c1ae2fedcac }}
+        images: 'index.docker.io/${{ secrets.AzureAppService_ContainerUsername_a043384f420c458692eb88148f27a951 }}/jokecustom:${{ github.sha }}'
